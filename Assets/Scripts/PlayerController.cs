@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();
-        Debug.Log(context.control.device);
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -33,16 +32,10 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        rb.AddForce(new Vector2(movementInput.x * movementSpeed, 0), ForceMode2D.Force);
-
-        if (jumped)
-        {
-            rb.velocity.Set(0, 0);
-            rb.AddForce(transform.up * jumpForce, ForceMode2D.Force);
-            Debug.Log("Jump pressed");
-            jumped = false;
+        if(movementInput != Vector2.zero){
+            
         }
     }
 }
